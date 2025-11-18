@@ -1,0 +1,228 @@
+{
+  "scripts": [
+    {
+      "id": "file-grouper",
+      "name": "File Grouper",
+      "description": "将目录中的文件按指定大小分组",
+      "type": "java",
+      "scriptPath": "src/FileGrouper.java",
+      "className": "FileGrouper",
+      "icon": "folder.fill",
+      "parameters": [
+        {
+          "name": "group_size",
+          "label": "分组大小",
+          "type": "integer",
+          "required": true,
+          "defaultValue": "200",
+          "description": "每组文件的数量"
+        },
+        {
+          "name": "sort_by_date",
+          "label": "按日期排序",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": "true",
+          "description": "是否按修改日期排序"
+        },
+        {
+          "name": "directory",
+          "label": "目录路径",
+          "type": "directory",
+          "required": true,
+          "description": "要处理的目录路径"
+        }
+      ]
+    },
+    {
+      "id": "date-modifier",
+      "name": "Date Modifier",
+      "description": "将文件修改日期改为创建日期",
+      "type": "java",
+      "scriptPath": "src/DateModifier.java",
+      "className": "DateModifier",
+      "icon": "calendar",
+      "parameters": [
+        {
+          "name": "file_types",
+          "label": "文件类型",
+          "type": "text",
+          "required": true,
+          "defaultValue": "*",
+          "description": "文件扩展名 (如: jpg/png/gif 或 * 表示所有)"
+        },
+        {
+          "name": "recursive",
+          "label": "递归处理",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": "true",
+          "description": "是否递归处理子目录"
+        },
+        {
+          "name": "directory",
+          "label": "目录路径",
+          "type": "directory",
+          "required": true,
+          "description": "要处理的目录路径"
+        }
+      ]
+    },
+    {
+      "id": "batch-zip",
+      "name": "Batch Zip",
+      "description": "使用 7zip 批量压缩所有子目录",
+      "type": "java",
+      "scriptPath": "src/BatchZip.java",
+      "className": "BatchZip",
+      "icon": "archivebox.fill",
+      "parameters": [
+        {
+          "name": "seven_zip_path",
+          "label": "7zip 路径",
+          "type": "file",
+          "required": true,
+          "defaultValue": "/Users/anpoliros/Applications/7z2403-mac/7zz",
+          "description": "7zip 可执行文件路径"
+        },
+        {
+          "name": "directory",
+          "label": "目录路径",
+          "type": "directory",
+          "required": true,
+          "description": "要处理的目录路径"
+        }
+      ],
+      "warnings": [
+        "此脚本使用硬编码密码: PHOTOSzbc23980813"
+      ]
+    },
+    {
+      "id": "png-to-jpeg",
+      "name": "PNG to JPEG Converter",
+      "description": "将 PNG 图片转换为 JPEG 格式",
+      "type": "java",
+      "scriptPath": "src/PngToJpegConverter.java",
+      "className": "PngToJpegConverter",
+      "icon": "photo",
+      "parameters": [
+        {
+          "name": "delete_original",
+          "label": "删除原文件",
+          "type": "choice",
+          "required": true,
+          "options": ["delete", "reserve"],
+          "defaultValue": "reserve",
+          "description": "是否删除原始 PNG 文件"
+        },
+        {
+          "name": "recursive",
+          "label": "递归处理",
+          "type": "choice",
+          "required": true,
+          "options": ["cascade", "only_this"],
+          "defaultValue": "cascade",
+          "description": "是否递归处理子目录"
+        },
+        {
+          "name": "directory",
+          "label": "目录路径",
+          "type": "directory",
+          "required": true,
+          "description": "要处理的目录路径"
+        }
+      ]
+    },
+    {
+      "id": "wallpaper-picker",
+      "name": "Wallpaper Picker",
+      "description": "选择横向图片作为壁纸",
+      "type": "java",
+      "scriptPath": "src/WallpaperPicker.java",
+      "className": "WallpaperPicker",
+      "icon": "photo.on.rectangle",
+      "parameters": [
+        {
+          "name": "delete_source",
+          "label": "删除源文件",
+          "type": "choice",
+          "required": true,
+          "options": ["delete", "reserve"],
+          "defaultValue": "reserve",
+          "description": "是否删除源文件"
+        },
+        {
+          "name": "cascade",
+          "label": "递归处理",
+          "type": "choice",
+          "required": true,
+          "options": ["cascade", "onlyhere"],
+          "defaultValue": "cascade",
+          "description": "是否递归处理子目录"
+        },
+        {
+          "name": "output_directory",
+          "label": "输出目录",
+          "type": "directory",
+          "required": true,
+          "defaultValue": "default",
+          "description": "输出目录路径 (或 'default')"
+        },
+        {
+          "name": "input_directory",
+          "label": "输入目录",
+          "type": "directory",
+          "required": true,
+          "description": "输入目录路径"
+        }
+      ]
+    },
+    {
+      "id": "wallpaper-picker-metadata",
+      "name": "Wallpaper Picker (Metadata)",
+      "description": "使用 EXIF 元数据选择横向图片",
+      "type": "java",
+      "scriptPath": "src/WallpaperPickerMetadata.java",
+      "className": "WallpaperPickerMetadata",
+      "icon": "photo.on.rectangle.angled",
+      "parameters": [
+        {
+          "name": "delete_source",
+          "label": "删除源文件",
+          "type": "choice",
+          "required": true,
+          "options": ["delete", "reserve"],
+          "defaultValue": "reserve",
+          "description": "是否删除源文件"
+        },
+        {
+          "name": "cascade",
+          "label": "递归处理",
+          "type": "choice",
+          "required": true,
+          "options": ["cascade", "onlyhere"],
+          "defaultValue": "cascade",
+          "description": "是否递归处理子目录"
+        },
+        {
+          "name": "output_directory",
+          "label": "输出目录",
+          "type": "directory",
+          "required": false,
+          "defaultValue": "null",
+          "description": "输出目录路径 (或 'null' 使用默认)"
+        },
+        {
+          "name": "input_directory",
+          "label": "输入目录",
+          "type": "directory",
+          "required": true,
+          "description": "输入目录路径"
+        }
+      ],
+      "warnings": [
+        "需要 Drew Imaging 库支持"
+      ]
+    }
+  ]
+}
