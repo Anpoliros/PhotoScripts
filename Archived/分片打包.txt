@@ -1,0 +1,6 @@
+#! /bin/bash
+
+shopt -s expand_aliases
+alias 7zz="/Users/anpoliros/Applications/7z2403-mac/7zz"
+alias batchzip="/Users/anpoliros/Applications/7z2403-mac/BatchZip.sh"
+

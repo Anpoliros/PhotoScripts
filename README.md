@@ -1,225 +1,259 @@
-# PhotoScripts - 照片处理工具集
+# PhotoScripts - Universal Script Management Platform
 
-这是一个照片和媒体文件处理工具集，包含多个实用的 Java 脚本工具。
+A comprehensive photo processing toolkit with a powerful macOS application for managing and automating scripts.
 
-## 🎯 Script Hub v2.0 - 通用脚本管理和自动化平台
+## 🚀 Script Hub v2.0
 
-**Script Hub** 是一个强大的 macOS 原生应用，不仅提供现代化的 GUI 来运行脚本，还包含完整的脚本管理、组织和自动化功能，类似 Apple Automator 但更加通用和开放！
+**Script Hub** is a modern macOS application that provides comprehensive script management, organization, and automation capabilities - similar to Apple Automator but more universal and open!
 
-### ✨ 主要特性
+### ✨ Key Features
 
-- 🎯 **智能脚本识别** - 自动分析 Java、Python、Shell 脚本的参数和入口点
-- 📁 **脚本分组管理** - 使用自定义分组来组织你的脚本
-- 🔄 **可视化工作流** - 像 Automator 一样串联脚本创建复杂的自动化流程
-- 💾 **数据持久化** - 所有配置自动保存，支持导入导出
-- 🚀 **多语言支持** - Java、Python、Shell，还可以扩展更多
+- 🎯 **Intelligent Script Recognition** - Auto-analyzes Java, Python, and Shell scripts
+- 📁 **Script Groups** - Organize scripts with custom groups, icons, and colors
+- 🔄 **Visual Workflows** - Chain scripts together like Automator to create powerful automations
+- 💾 **Data Persistence** - Auto-saves everything, supports import/export
+- 🚀 **Multi-Language Support** - Java, Python, Shell, extensible to more
 
-### 快速开始
+### Quick Start
 
 ```bash
-cd ScriptHub
 ./build.sh
 ./.build/release/ScriptHub
 ```
 
-或者在 Xcode 中打开：
-
+Or open in Xcode:
 ```bash
-cd ScriptHub
 open Package.swift
 ```
 
-详细说明请参阅：
-- [Script Hub 完整文档](ScriptHub/README_v2.md)
-- [快速开始指南](QUICKSTART.md)
+📖 **Full Documentation**: [Documentation/README_v2.md](Documentation/README_v2.md)
 
-## 📦 包含的脚本工具
-
-### 1. File Grouper (文件分组器)
-将目录中的文件按指定大小分组。
-
-**使用方法：**
-```bash
-java FileGrouper <分组大小> <按日期排序> <目录路径>
-# 示例
-java FileGrouper 200 true ./Photos
-```
-
-**参数说明：**
-- `分组大小` - 每组包含的文件数量
-- `按日期排序` - true 或 false
-- `目录路径` - 要处理的目录
-
-### 2. Date Modifier (日期修改器)
-将文件的修改日期改为创建日期。
-
-**使用方法：**
-```bash
-java DateModifier <文件类型> <递归处理> <目录路径>
-# 示例
-java DateModifier "jpg/png/gif" true ./Photos
-java DateModifier "*" false ./Photos  # 所有文件类型
-```
-
-**参数说明：**
-- `文件类型` - 文件扩展名（用 / 分隔），或 * 表示所有类型
-- `递归处理` - true 或 false
-- `目录路径` - 要处理的目录
-
-### 3. Batch Zip (批量压缩)
-使用 7zip 批量压缩所有子目录（带密码保护）。
-
-**使用方法：**
-```bash
-java BatchZip <7zip路径> <目录路径>
-# 示例
-java BatchZip /usr/local/bin/7z ./Photos
-```
-
-**注意：**
-- 需要安装 7zip
-- 默认密码：PHOTOSzbc23980813
-
-### 4. PNG to JPEG Converter (PNG转JPEG)
-批量将 PNG 图片转换为 JPEG 格式。
-
-**使用方法：**
-```bash
-java PngToJpegConverter <删除原文件> <递归处理> <目录路径>
-# 示例
-java PngToJpegConverter reserve cascade ./Photos
-```
-
-**参数说明：**
-- `删除原文件` - delete 或 reserve
-- `递归处理` - cascade 或 only_this
-- `目录路径` - 要处理的目录
-
-### 5. Wallpaper Picker (壁纸选择器)
-从图片集合中筛选出横向（宽屏）图片。
-
-**使用方法：**
-```bash
-java WallpaperPicker <删除源文件> <递归处理> <输出目录> <输入目录>
-# 示例
-java WallpaperPicker reserve cascade ./wallpapers ./Photos
-java WallpaperPicker delete onlyhere default ./Photos
-```
-
-**参数说明：**
-- `删除源文件` - delete 或 reserve
-- `递归处理` - cascade 或 onlyhere
-- `输出目录` - 输出目录路径或 "default"
-- `输入目录` - 输入目录路径
-
-### 6. Wallpaper Picker Metadata (元数据壁纸选择器)
-使用 EXIF 元数据来筛选横向图片（更准确）。
-
-**使用方法：**
-```bash
-java WallpaperPickerMetadata <删除源文件> <递归处理> <输出目录> <输入目录>
-# 示例
-java WallpaperPickerMetadata reserve cascade null ./Photos
-```
-
-**注意：**
-- 需要 Drew Imaging 库支持
-- 输出目录可以使用 "null" 表示使用默认位置
-
-## 🛠️ 编译和运行
-
-### 编译单个脚本
-
-```bash
-# 编译
-javac -d out/production/Scripts src/ScriptName.java
-
-# 运行
-java -cp out/production/Scripts ScriptName <参数>
-```
-
-### 编译所有脚本
-
-```bash
-# 创建输出目录
-mkdir -p out/production/Scripts
-
-# 编译所有脚本
-javac -d out/production/Scripts src/*.java
-```
-
-## 📁 项目结构
+## 📂 Project Structure
 
 ```
 PhotoScripts/
-├── src/                          # Java 源代码
-│   ├── FileGrouper.java
-│   ├── DateModifier.java
-│   ├── BatchZip.java
-│   ├── PngToJpegConverter.java
-│   ├── WallpaperPicker.java
-│   └── WallpaperPickerMetadata.java
-├── archive/                      # 归档的旧版本脚本
-├── jar/                          # 预编译的 JAR 文件
-├── out/production/Scripts/       # 编译输出
-├── test/                         # 测试数据
-├── ScriptHub/                    # macOS 应用（推荐使用！）
-│   ├── ScriptHub/                # Swift 源代码
-│   ├── Package.swift             # Swift Package 配置
-│   ├── build.sh                  # 构建脚本
-│   └── README.md                 # 应用文档
-├── scripts_config.json           # 脚本配置（供 ScriptHub 使用）
-└── readme.txt                    # 原始说明文件（中文）
+├── ScriptHubApp/              # macOS Application (Swift)
+│   ├── App/                   # Application entry point
+│   ├── Models/                # Data models
+│   ├── Views/                 # SwiftUI views
+│   ├── Controllers/           # View models and controllers
+│   ├── Services/              # Business logic
+│   └── Resources/             # App resources (Info.plist, assets)
+│
+├── Scripts/                   # Example Scripts
+│   ├── PhotoProcessing/       # Photo manipulation scripts
+│   ├── FileManagement/        # File organization scripts
+│   └── Utilities/             # General utilities
+│
+├── Build/                     # Build output
+│   └── Classes/               # Compiled Java classes
+│
+├── Documentation/             # Project documentation
+├── Archived/                  # Legacy code and old versions
+│
+├── Package.swift              # Swift Package definition
+├── build.sh                   # Build script
+└── README.md                  # This file
 ```
 
-## 💡 使用建议
+## 🛠️ Included Scripts
 
-### 推荐：使用 Script Hub 应用
-最简单的方式是使用 Script Hub macOS 应用：
-1. 不需要记忆复杂的命令行参数
-2. 图形界面选择文件和目录
-3. 实时查看执行输出
-4. 自动编译 Java 代码
+### Photo Processing
 
-### 命令行使用
-如果你更喜欢命令行：
-1. 预编译的 class 文件在 `out/production/Scripts/`
-2. 可以直接使用 `java -cp out/production/Scripts ScriptName` 运行
+**Date Modifier** - Synchronizes file modification dates with creation dates
+```bash
+java -cp Build/Classes DateModifier "*" true /path/to/photos
+```
 
-## 🔧 系统要求
+**PNG to JPEG Converter** - Batch converts PNG images to JPEG
+```bash
+java -cp Build/Classes PngToJpegConverter reserve cascade /path/to/images
+```
 
-- **Java**: JDK 18 或更高版本
-- **macOS**: 13.0+ (仅 Script Hub 应用需要)
-- **7zip**: 用于 BatchZip 脚本
-- **Drew Imaging 库**: 用于 WallpaperPickerMetadata
+**Wallpaper Picker** - Extracts landscape-oriented images
+```bash
+java -cp Build/Classes WallpaperPicker reserve cascade /output /input
+```
 
-## 📝 常见问题
+**Wallpaper Picker (Metadata)** - Uses EXIF metadata for accurate detection
+```bash
+java -cp Build/Classes WallpaperPickerMetadata reserve cascade null /input
+```
 
-### Q: 如何选择使用哪个壁纸选择器？
+### File Management
 
-- **WallpaperPicker**: 更快，但可能不够准确（直接读取图片）
-- **WallpaperPickerMetadata**: 更准确（读取 EXIF 元数据），但需要额外的库
+**File Grouper** - Partitions files into groups of specified sizes
+```bash
+java -cp Build/Classes FileGrouper 200 true /path/to/files
+```
 
-### Q: BatchZip 的密码能修改吗？
+**Batch Zip** - Batch compress subdirectories with 7zip
+```bash
+java -cp Build/Classes BatchZip /usr/local/bin/7z /path/to/dirs
+```
 
-需要修改 `src/BatchZip.java` 源代码中的密码常量，然后重新编译。
+## 🎯 Using Script Hub
 
-### Q: 脚本可以处理中文路径吗？
+### 1. Import Scripts
 
-可以，所有脚本都支持 UTF-8 编码的中文路径。
+**Scan Directory:**
+1. Open "Management" tab
+2. Click + → "Scan Directory"
+3. Select folder containing scripts
+4. Review detected scripts and import
 
-## 🚀 未来计划
+**Import Files:**
+1. Open "Management" tab
+2. Click + → "Import Script Files"
+3. Select one or more script files
+4. Import
 
-- [ ] 支持 Python 脚本
-- [ ] 添加更多图片处理功能
-- [ ] 提供 Windows 版本的 GUI
-- [ ] 添加批处理任务队列
-- [ ] 支持自定义脚本插件
+### 2. Organize with Groups
 
-## 📄 许可证
+1. Navigate to "Scripts" tab
+2. Click + in left sidebar to create group
+3. Set name, icon, and color
+4. Right-click scripts to add to groups
 
-本项目为个人工具集，欢迎使用和修改。
+### 3. Create Workflows
 
-## 🤝 贡献
+1. Switch to "Workflows" tab
+2. Click + to create new workflow
+3. Add script nodes from your library
+4. Configure parameter mappings
+5. Run workflow and watch automation in action
 
-欢迎提交问题报告和改进建议！
+### Example Workflow
+
+```
+Photo Processing Pipeline:
+
+DateModifier → PngToJpegConverter → WallpaperPicker → BatchZip
+
+Result: Automatically fixes dates, converts formats, filters images, and archives
+```
+
+## 🏗️ Architecture
+
+### MVC Pattern
+
+The application follows Model-View-Controller architecture:
+
+**Models** - Data structures (Script, Workflow, ScriptGroup)
+**Views** - SwiftUI interfaces (NewContentView, WorkflowEditorView, etc.)
+**Controllers** - State management (DataStore)
+**Services** - Business logic (ScriptScanner, ScriptExecutor, WorkflowExecutor)
+
+See [ScriptHubApp/README.md](ScriptHubApp/README.md) for detailed architecture documentation.
+
+## 🔧 Development
+
+### Building
+
+```bash
+# Build and compile scripts
+./build.sh
+
+# Run application
+./.build/release/ScriptHub
+
+# Open in Xcode
+open Package.swift
+```
+
+### Requirements
+
+- macOS 13.0 (Ventura) or later
+- Xcode 15.0 or later
+- Swift 5.9 or later
+- Java JDK 18+ (for Java scripts)
+- Python 3.x (for Python scripts)
+
+### Adding New Scripts
+
+Script Hub automatically detects scripts with:
+- **Java**: Public main method, command-line args
+- **Python**: argparse or sys.argv
+- **Shell**: Positional parameters ($1, $2, ...)
+
+Just place your script in `Scripts/` and scan!
+
+### Creating Xcode Project
+
+To create a full `.xcodeproj`:
+
+```bash
+# Xcode will create it automatically
+open Package.swift
+
+# Or generate manually
+swift package generate-xcodeproj
+```
+
+## 📚 Documentation
+
+- [Full v2.0 Documentation](Documentation/README_v2.md)
+- [Quick Start Guide](Documentation/QUICKSTART.md)
+- [App Architecture](ScriptHubApp/README.md)
+
+## 🎨 Script Hub Features
+
+### Intelligent Script Recognition
+- Automatically detects entry points
+- Extracts parameter definitions
+- Infers parameter types
+- Reads descriptions from comments
+
+### Script Management
+- Add, edit, delete scripts via GUI
+- Import files or scan directories
+- Duplicate scripts
+- Export/import configurations
+
+### Visual Workflow Editor
+- Drag-and-drop script nodes
+- Visual connection display
+- Parameter mapping system
+- Topological execution ordering
+- Real-time output from each node
+
+### Data Persistence
+- Auto-saves all configurations
+- Import/export JSON
+- Workflow versioning
+
+## 🗺️ Migration from v1.0
+
+If you're upgrading from v1.0:
+
+1. Old `src/` scripts → Now in `Scripts/PhotoProcessing/` and `Scripts/FileManagement/`
+2. Old `out/production/Scripts/` → Now in `Build/Classes/`
+3. Old config location supported for backward compatibility
+4. Run `./build.sh` to compile scripts in new location
+
+## 🚀 Future Plans
+
+- [ ] Visual node connections (drag-to-connect)
+- [ ] Conditional branching (if/else)
+- [ ] Loop execution (for/while)
+- [ ] Variable system
+- [ ] Script marketplace
+- [ ] Remote execution
+- [ ] Scheduled tasks
+- [ ] Git integration
+- [ ] More language support (Ruby, Go, Rust)
+- [ ] Performance profiling
+
+## 📄 License
+
+Open source - feel free to use and modify!
+
+## 🙏 Acknowledgments
+
+- Inspired by Apple Automator
+- Built with Swift and SwiftUI
+- Thanks to all contributors!
+
+---
+
+**Script Hub - Make script management simple, automation powerful!** 🚀

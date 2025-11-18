@@ -1,0 +1,40 @@
+# Swift/Xcode
+.build/
+.swiftpm/
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Build output
+Build/
+*.app
+*.zip
+
+# Java
+*.class
+*.jar
+!jar/WallpaperPicker.jar
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+
+# Legacy (kept for reference but not tracked)
+ScriptHub.app/
