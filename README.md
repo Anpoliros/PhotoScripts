@@ -16,17 +16,30 @@ A comprehensive photo processing toolkit with a powerful macOS application for m
 
 ### Quick Start
 
+#### Option 1: Open in Xcode (Recommended) 🎯
+
+Double-click `ScriptHub.xcodeproj` or run:
+```bash
+./open-xcode.sh
+# Then press ⌘R to build and run
+```
+
+#### Option 2: Command Line Build
+
 ```bash
 ./build.sh
 ./.build/release/ScriptHub
 ```
 
-Or open in Xcode:
+#### Option 3: Swift Package
+
 ```bash
 open Package.swift
 ```
 
-📖 **Full Documentation**: [Documentation/README_v2.md](Documentation/README_v2.md)
+📖 **Documentation**:
+- [Xcode Setup Guide](XCODE.md) - How to use the Xcode project
+- [Full Documentation](Documentation/README_v2.md) - Complete feature guide
 
 ## 📂 Project Structure
 
@@ -51,8 +64,11 @@ PhotoScripts/
 ├── Documentation/             # Project documentation
 ├── Archived/                  # Legacy code and old versions
 │
+├── ScriptHub.xcodeproj/       # Xcode Project (double-click to open!)
 ├── Package.swift              # Swift Package definition
 ├── build.sh                   # Build script
+├── open-xcode.sh              # Open in Xcode helper
+├── XCODE.md                   # Xcode setup guide
 └── README.md                  # This file
 ```
 
@@ -150,15 +166,36 @@ See [ScriptHubApp/README.md](ScriptHubApp/README.md) for detailed architecture d
 
 ### Building
 
+#### Using Xcode (Recommended)
+
+```bash
+# Open the Xcode project
+./open-xcode.sh
+
+# Or double-click ScriptHub.xcodeproj in Finder
+# Then press ⌘R to build and run
+```
+
+See [XCODE.md](XCODE.md) for complete Xcode setup instructions.
+
+#### Using Command Line
+
 ```bash
 # Build and compile scripts
 ./build.sh
 
 # Run application
 ./.build/release/ScriptHub
+```
 
-# Open in Xcode
+#### Using Swift Package
+
+```bash
+# Open as Swift Package
 open Package.swift
+
+# Build from command line
+swift build -c release
 ```
 
 ### Requirements
@@ -178,23 +215,30 @@ Script Hub automatically detects scripts with:
 
 Just place your script in `Scripts/` and scan!
 
-### Creating Xcode Project
+### Working with Xcode
 
-To create a full `.xcodeproj`:
+The project includes a native **ScriptHub.xcodeproj** file ready to use:
 
 ```bash
-# Xcode will create it automatically
-open Package.swift
+# Open in Xcode
+./open-xcode.sh
 
-# Or generate manually
-swift package generate-xcodeproj
+# Or double-click ScriptHub.xcodeproj in Finder
 ```
+
+**First-time setup:**
+1. Select your development team in Signing & Capabilities
+2. Press ⌘R to build and run
+3. See [XCODE.md](XCODE.md) for detailed instructions
+
+**Alternative:** You can also use `open Package.swift` to work with the Swift Package directly.
 
 ## 📚 Documentation
 
-- [Full v2.0 Documentation](Documentation/README_v2.md)
-- [Quick Start Guide](Documentation/QUICKSTART.md)
-- [App Architecture](ScriptHubApp/README.md)
+- **[Xcode Setup Guide](XCODE.md)** - Complete guide to using Xcode with this project
+- [Full v2.0 Documentation](Documentation/README_v2.md) - All features explained
+- [Quick Start Guide](Documentation/QUICKSTART.md) - Get started quickly
+- [App Architecture](ScriptHubApp/README.md) - MVC architecture details
 
 ## 🎨 Script Hub Features
 

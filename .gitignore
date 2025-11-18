@@ -1,9 +1,10 @@
 # Swift/Xcode
 .build/
 .swiftpm/
-*.xcodeproj
-*.xcworkspace
-xcuserdata/
+# Don't ignore the project file itself, only user data
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
 DerivedData/
 *.hmap
 *.ipa
