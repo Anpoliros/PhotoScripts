@@ -2,9 +2,17 @@
 
 这是一个照片和媒体文件处理工具集，包含多个实用的 Java 脚本工具。
 
-## 🎯 新功能：Script Hub macOS 应用
+## 🎯 Script Hub v2.0 - 通用脚本管理和自动化平台
 
-现在可以通过图形界面来使用所有脚本了！**Script Hub** 是一个原生 macOS 应用，提供现代化的 GUI 来管理和运行所有脚本。
+**Script Hub** 是一个强大的 macOS 原生应用，不仅提供现代化的 GUI 来运行脚本，还包含完整的脚本管理、组织和自动化功能，类似 Apple Automator 但更加通用和开放！
+
+### ✨ 主要特性
+
+- 🎯 **智能脚本识别** - 自动分析 Java、Python、Shell 脚本的参数和入口点
+- 📁 **脚本分组管理** - 使用自定义分组来组织你的脚本
+- 🔄 **可视化工作流** - 像 Automator 一样串联脚本创建复杂的自动化流程
+- 💾 **数据持久化** - 所有配置自动保存，支持导入导出
+- 🚀 **多语言支持** - Java、Python、Shell，还可以扩展更多
 
 ### 快速开始
 
@@ -21,7 +29,9 @@ cd ScriptHub
 open Package.swift
 ```
 
-详细说明请参阅 [ScriptHub/README.md](ScriptHub/README.md)
+详细说明请参阅：
+- [Script Hub 完整文档](ScriptHub/README_v2.md)
+- [快速开始指南](QUICKSTART.md)
 
 ## 📦 包含的脚本工具
 

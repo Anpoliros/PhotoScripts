@@ -11,10 +11,17 @@ import SwiftUI
 struct ScriptHubApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .frame(minWidth: 900, minHeight: 600)
+            NewContentView()
+                .frame(minWidth: 1000, minHeight: 700)
         }
         .windowStyle(.hiddenTitleBar)
-        .windowResizability(.contentSize)
+        .commands {
+            CommandGroup(replacing: .newItem) {
+                Button("新建工作流") {
+                    // Trigger new workflow
+                }
+                .keyboardShortcut("n", modifiers: .command)
+            }
+        }
     }
 }
